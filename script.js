@@ -142,7 +142,7 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
-
+/*
 const books = getBooks();
 books;
 
@@ -200,7 +200,78 @@ console.log(`The book has ${pagesRanges} pages.`);
 // }
 
 // Arrow Function
-const getYear = (str) =>
- str.split("-")[0];
+const getYear = (str) => str.split("-")[0];
 
 console.log(getYear(publicationDate));
+
+// Short-Circuiting And Logical Operators: &&, ||, ??
+console.log(true && "Hello");
+console.log(false && "Hello");
+
+console.log(hasMovieAdaptation && "This book has a movie");
+
+// fasle 0, null, '' and undefined
+console.log("hello " && "Sabita");
+console.log(0 && "hello");
+console.log("" && "hello");
+console.log(null && "hello");
+console.log(undefined && "hello");
+
+console.log(true || "Hello");
+console.log(false || "Hello");
+
+console.log(book.translations.spanish);
+
+const reviewsCount = book.reviews.librarything.reviewsCount || "NO data";
+reviewsCount;
+
+const reviewCount = book.reviews.librarything.reviewsCount ?? "NO data";
+reviewCount;
+
+// Optional Chaining
+
+ getTotalReviewsCount = (book) => {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+};
+console.log(getTotalReviewsCount(book));
+*/
+
+// Array Map Method
+const books = getBooks();
+books;
+
+const x = [1, 2, 3, 4, 5].map((e) => e);
+console.log(x);
+
+const getBookTitle = books.map((book) => book.title);
+getBookTitle;
+
+getTotalReviewsCount = (book) => {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+};
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewsCount(book),
+}));
+essentialData;
+
+// Array Filter Method
+const longBookWithmovie = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+longBookWithmovie;
+
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => book.title);
+adventureBooks;
+
+//Array Reduce Method
+const allPages = books.reduce((acc,book)=> acc+book.pages,0)
+allPages
