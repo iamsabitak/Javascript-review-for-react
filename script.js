@@ -273,5 +273,5 @@ const adventureBooks = books
 adventureBooks;
 
 //Array Reduce Method
-const allPages = books.reduce((acc,book)=> acc+book.pages,0)
-allPages
+const allPages = books.reduce((acc, book) => acc + book.pages, 0);
+allPages;
