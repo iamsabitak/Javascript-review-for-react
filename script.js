@@ -238,6 +238,7 @@ reviewCount;
 console.log(getTotalReviewsCount(book));
 */
 
+/*
 // Array Map Method
 const books = getBooks();
 books;
@@ -275,3 +276,51 @@ adventureBooks;
 //Array Reduce Method
 const allPages = books.reduce((acc, book) => acc + book.pages, 0);
 allPages;
+
+//sort array method
+const arr = [1, 9, 0, 7, 2, 3, 4, 5];
+const sortedAsc = arr.slice().sort((a, b) => a - b); //<--it will short the array in ascending order
+sortedAsc;
+const sortedDes = arr.slice().sort((a, b) => b - a); //<--it will short the array in descending order
+sortedDes;
+arr;
+
+const sortBooksbypages = books.slice().sort((a, b) => a.pages - b.pages);
+sortBooksbypages;
+
+// Working With immutable arrays
+
+// 1) Add book object to array
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J.K Rowling",
+};
+
+const booksAfterAdded = [...books,newBook]
+booksAfterAdded;
+
+// 2) Delete book object from array
+const booksAfterDelete = booksAfterAdded.filter((book)=> book.id !== 6)
+booksAfterDelete;
+
+// 2) Update book object in the array
+booksAfterUpdate = booksAfterDelete.map((book)=> book.id === 1? {...book,pages:1210} : book)
+booksAfterUpdate;
+*/
+
+//Asynchronous JavaScript: Promises
+
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+
+//async and await
+const getTodos = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  console.log(data);
+};
+getTodos();
+console.log("sabu");
